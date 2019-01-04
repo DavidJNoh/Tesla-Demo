@@ -9,17 +9,17 @@ import {
   ListItemSecondaryAction,
   IconButton
 } from "@material-ui/core";
-import { Delete, FourK } from "@material-ui/icons";
+import { Delete, FourK, Edit } from "@material-ui/icons";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import { red, blue } from "@material-ui/core/colors";
+import Form from "./Form";
 
 // import DeleteForeverTwoToneIcon from "@material-ui/icons/DeleteForeverTwoTone";
 
 const style = {
-  Paper: {
+  paper: {
     padding: 20,
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 5,
     height: 500,
     overflowY: "auto"
   }
@@ -34,23 +34,32 @@ function HomeIcon(props) {
 }
 
 export default ({
+  muscles,
   exercises,
   category,
+  editMode,
   onSelect,
+  exercise,
   exercise: {
     id,
     title = "Welcome!",
     description = "Please select an exercise"
   },
-  onDelete
+  onDelete,
+  onSelectEdit,
+  onEdit
 }) => (
   <Grid container>
-    <Grid item sm>
-      <Paper style={style.Paper}>
+    <Grid item xs={12} sm={6}>
+      <Paper style={style.paper}>
         {exercises.map(([group, exercises]) =>
           !category || category === group ? (
             <React.Fragment key={group}>
-              <Typography variant="h6" style={{ textTransform: "capitalize" }}>
+              <Typography
+                color="secondary"
+                variant="h6"
+                style={{ textTransform: "capitalize" }}
+              >
                 {group}
               </Typography>
               <List component="ul">
@@ -58,7 +67,13 @@ export default ({
                   <ListItem onClick={() => onSelect(id)} key={id} button>
                     <ListItemText primary={title} />
                     <ListItemSecondaryAction>
-                      <IconButton onClick={() => onDelete(id)}>
+                      <IconButton
+                        color="primary"
+                        onClick={() => onSelectEdit(id)}
+                      >
+                        <Edit />
+                      </IconButton>
+                      <IconButton color="primary" onClick={() => onDelete(id)}>
                         <Delete />
                       </IconButton>
                     </ListItemSecondaryAction>
@@ -94,12 +109,20 @@ export default ({
         />
       </Paper>
     </Grid>
-    <Grid item sm>
-      <Paper style={style.Paper}>
-        <Typography variant="h4">{title}</Typography>
-        <Typography variant="subtitle1" style={{ marginTop: 20 }}>
-          {description}
-        </Typography>
+    <Grid item xs={12} sm={6}>
+      <Paper style={style.paper}>
+        {editMode ? (
+          <Form exercise={exercise} muscles={muscles} onSubmit={onEdit} />
+        ) : (
+          <React.Fragment>
+            <Typography color="secondary" variant="h4">
+              {title}
+            </Typography>
+            <Typography variant="subtitle1" style={{ marginTop: 20 }}>
+              {description}
+            </Typography>
+          </React.Fragment>
+        )}
       </Paper>
     </Grid>
   </Grid>

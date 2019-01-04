@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Paper, Tabs, Tab } from "@material-ui/core";
+import { AppBar, Tabs, Tab } from "@material-ui/core";
 
 class Footer extends Component {
   render() {
@@ -12,12 +12,12 @@ class Footer extends Component {
       onSelect(index === 0 ? "" : muscles[index - 1]);
 
     return (
-      <Paper>
+      <AppBar position="static">
         <Tabs
           value={index}
           onChange={onIndexSelect}
-          indicatorColor="primary"
-          textColor="primary"
+          indicatorColor="secondary"
+          textColor="secondary"
           centered
         >
           <Tab label="All" />
@@ -25,7 +25,7 @@ class Footer extends Component {
             <Tab key={group} label={group} />
           ))}
         </Tabs>
-      </Paper>
+      </AppBar>
     );
   }
 }
