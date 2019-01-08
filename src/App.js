@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Header, Footer } from "./Components";
 import Exercises from "./Components/Exercises";
 import { muscles, exercises } from "./Components/store";
+import { THREE } from "three/build/three.js";
 
 class App extends Component {
   state = {
