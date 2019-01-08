@@ -44,7 +44,7 @@ export default withStyles(styles)(
           </Fab>
           <Dialog
             maxWidth="xl"
-            fullWidth="true"
+            // fullWidth="true"
             open={open}
             onClose={this.handleToggle}
           >

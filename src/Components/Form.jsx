@@ -31,7 +31,7 @@ export default withStyles(styles)(
           };
     }
 
-    componentWillReceiveProps({ exercise }) {
+    componentDidUpdate({ exercise }) {
       this.setState({
         ...exercise
       });
@@ -41,6 +41,7 @@ export default withStyles(styles)(
       this.setState({
         [name]: event.target.value
       });
+
     handleSubmit = () => {
       //TODO: validate
 

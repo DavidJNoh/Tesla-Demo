@@ -7,12 +7,8 @@
     "@material-ui/icons": "^3.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-<<<<<<< HEAD
     "react-scripts": "2.1.1",
     "three": "^0.100.0",
-=======
-    "react-scripts": "^2.1.2",
->>>>>>> c5581c8306027c3bf6b6dbe529aeac1192abd5f2
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
