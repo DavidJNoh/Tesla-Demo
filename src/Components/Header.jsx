@@ -1,14 +1,20 @@
 import React, { Component } from "react";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, withStyles } from "@material-ui/core";
 import CreateDialog from "./Dialogs/Create";
+
+const styles = {
+  flex: {
+    flex: 1
+  }
+};
 
 class Header extends Component {
   render() {
-    const { muscles, onExerciseCreate } = this.props;
+    const { classes, muscles, onExerciseCreate } = this.props;
     return (
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h5" color="inherit" style={{ flex: 1 }}>
+          <Typography variant="h5" color="inherit" className={classes.flex}>
             Header with Typography
           </Typography>
           <CreateDialog muscles={muscles} onCreate={onExerciseCreate} />
@@ -18,4 +24,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withStyles(styles)(Header);
