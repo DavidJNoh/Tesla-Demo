@@ -9,7 +9,7 @@ import {
   ListItemSecondaryAction,
   IconButton
 } from "@material-ui/core";
-import { Delete, FourK, Edit } from "@material-ui/icons";
+import { Star, Delete, FourK, Edit } from "@material-ui/icons";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import { red, blue } from "@material-ui/core/colors";
 import Form from "./Form";
@@ -22,6 +22,10 @@ const style = {
     marginTop: 5,
     height: 500,
     overflowY: "auto"
+  },
+  icon: {
+    padding: 0,
+    marginBottom: 6
   }
 };
 
@@ -55,13 +59,36 @@ export default ({
         {exercises.map(([group, exercises]) =>
           !category || category === group ? (
             <React.Fragment key={group}>
+              {exercises.length === 0 ? (
+                <Typography
+                  color="secondary"
+                  variant="h6"
+                  style={{ textTransform: "capitalize" }}
+                >
+                  {group}
+                </Typography>
+              ) : (
+                <Typography
+                  color="secondary"
+                  variant="h6"
+                  style={{ textTransform: "capitalize" }}
+                >
+                  <IconButton style={style.icon} color="primary">
+                    <Star />
+                  </IconButton>{" "}
+                  {group}
+                </Typography>
+              )}
+
+              {/* {exercises.length === 0 ? "Zero" : "Not Zero"}
               <Typography
                 color="secondary"
                 variant="h6"
                 style={{ textTransform: "capitalize" }}
               >
                 {group}
-              </Typography>
+              </Typography> */}
+
               <List component="ul">
                 {exercises.map(({ id, title }) => (
                   <ListItem onClick={() => onSelect(id)} key={id} button>

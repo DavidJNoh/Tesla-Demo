@@ -42,12 +42,7 @@ export default withStyles(styles)(
           <Fab onClick={this.handleToggle} size="small" color="secondary">
             <AddIcon />
           </Fab>
-          <Dialog
-            maxWidth="xl"
-            fullWidth="true"
-            open={open}
-            onClose={this.handleToggle}
-          >
+          <Dialog maxWidth="xl" open={open} onClose={this.handleToggle}>
             <DialogTitle>Create a New Exercise</DialogTitle>
             <DialogContent>
               <DialogContentText>

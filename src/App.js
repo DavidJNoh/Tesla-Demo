@@ -25,8 +25,6 @@ class App extends Component {
       {}
     );
 
-    console.log(muscles, initExercises);
-
     return Object.entries(
       this.state.exercises.reduce((exercises, exercise) => {
         const { muscles } = exercise;
