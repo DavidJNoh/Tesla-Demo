@@ -41,6 +41,7 @@ export default withStyles(styles)(
       this.setState({
         [name]: event.target.value
       });
+
     handleSubmit = () => {
       //TODO: validate
 

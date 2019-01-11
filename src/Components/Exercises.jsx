@@ -13,6 +13,8 @@ import { Star, Delete, FourK, Edit } from "@material-ui/icons";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import { red, blue } from "@material-ui/core/colors";
 import Form from "./Form";
+import ThreeScene from "./Three/ThreeScene";
+import ThreeForm from "./Dialogs/ThreeForm";
 
 // import DeleteForeverTwoToneIcon from "@material-ui/icons/DeleteForeverTwoTone";
 
@@ -51,7 +53,9 @@ export default ({
   },
   onDelete,
   onSelectEdit,
-  onEdit
+  onEdit,
+  threeJS,
+  threeEdit
 }) => (
   <Grid container>
     <Grid item xs={12} sm={6}>
@@ -135,6 +139,7 @@ export default ({
           )}
         />
       </Paper>
+      <ThreeForm threeJS={threeJS} handleThreeEdit={threeEdit} />
     </Grid>
     <Grid item xs={12} sm={6}>
       <Paper style={style.paper}>
@@ -151,6 +156,7 @@ export default ({
           </React.Fragment>
         )}
       </Paper>
+      <ThreeScene threeJS={threeJS} />
     </Grid>
   </Grid>
 );

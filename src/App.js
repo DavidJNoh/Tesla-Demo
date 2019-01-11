@@ -3,18 +3,30 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { Header, Footer } from "./Components";
 import Exercises from "./Components/Exercises";
 import { muscles, exercises } from "./Components/store";
+// import { THREE } from "three/build/three.js";
 
 class App extends Component {
   state = {
     exercises,
     category: "",
     exercise: {},
-    editMode: false
+    editMode: false,
+    threeJS: {
+      cameraAngle: 75,
+      cameraPositionZ: 5,
+      cubeX: 1,
+      cubeY: 1,
+      cubeZ: 1,
+      cubeColor: "FFFFFF",
+      cubeRotationX: 0.01,
+      cubeRotationY: 0.01,
+      stop: false
+    }
   };
 
-  // componentDidMount() {
-  //   console.log(this.state.exercises);
-  // }
+  componentDidMount() {
+    console.log("Parent Mounted");
+  }
 
   getExercisesByMuscles() {
     const initExercises = muscles.reduce(
@@ -71,9 +83,19 @@ class App extends Component {
       exercise
     }));
 
+  handleThreeEdit = x => {
+    this.setState(
+      {
+        threeJS: x
+      },
+      () => {
+        console.log("Editted Three", this.state.threeJS);
+      }
+    );
+  };
   render() {
     const exercises = this.getExercisesByMuscles(),
-      { category, exercise, editMode } = this.state;
+      { threeJS, category, exercise, editMode } = this.state;
 
     return (
       <React.Fragment>
@@ -93,6 +115,8 @@ class App extends Component {
           onDelete={this.handleExerciseDelete}
           onSelectEdit={this.handleExerciseSelectEdit}
           onEdit={this.handleExerciseEdit}
+          threeJS={threeJS}
+          threeEdit={this.handleThreeEdit}
         />
 
         <Footer
