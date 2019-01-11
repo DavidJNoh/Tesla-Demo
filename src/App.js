@@ -13,20 +13,20 @@ class App extends Component {
     editMode: false,
     threeJS: {
       cameraAngle: 75,
-      cameraPositionZ: 3,
+      cameraPositionZ: 5,
       cubeX: 1,
       cubeY: 1,
       cubeZ: 1,
-      cubeColor: "433F81",
+      cubeColor: "FFFFFF",
       cubeRotationX: 0.01,
       cubeRotationY: 0.01,
       stop: false
     }
   };
 
-  // componentDidMount() {
-  //   console.log(this.state.exercises);
-  // }
+  componentDidMount() {
+    console.log("Parent Mounted");
+  }
 
   getExercisesByMuscles() {
     const initExercises = muscles.reduce(
@@ -84,10 +84,14 @@ class App extends Component {
     }));
 
   handleThreeEdit = x => {
-    console.log(x);
-    this.setState({
-      threeJS: x
-    });
+    this.setState(
+      {
+        threeJS: x
+      },
+      () => {
+        console.log("Editted Three", this.state.threeJS);
+      }
+    );
   };
   render() {
     const exercises = this.getExercisesByMuscles(),
